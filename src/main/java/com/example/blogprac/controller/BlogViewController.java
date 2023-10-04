@@ -1,7 +1,9 @@
 package com.example.blogprac.controller;
 
 import com.example.blogprac.domain.Article;
+import com.example.blogprac.domain.User;
 import com.example.blogprac.dto.ArticleListViewResponse;
+import com.example.blogprac.dto.ArticleResponse;
 import com.example.blogprac.service.BlogService;
 import com.example.blogprac.dto.ArticleViewResponse;
 import lombok.RequiredArgsConstructor;
@@ -20,11 +22,10 @@ public class BlogViewController {
     private final BlogService blogService;
 
     @GetMapping("/articles")
-    public String getArticles(Model model) {
+    public String getArticles(Model model, User user) {
         List<ArticleListViewResponse> articles = blogService.findAll()
                 .stream()
-                .map(ArticleListViewResponse::new)
-                .toList();
+                .map(ArticleListViewResponse::new).toList();
         model.addAttribute("articles", articles);
 
         return "articleList";

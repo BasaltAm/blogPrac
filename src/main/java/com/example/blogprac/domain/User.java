@@ -9,24 +9,25 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User implements UserDetails{
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", updatable = false )
-        private long id;
+    private Long userId;
     @Column(name = "eamil", nullable = false, unique = true)
     private String email;
     @Column(name = "password", nullable = false)
     private String password;
     @Builder
-    public User(String email, String password, String auth){
+    public User(String email, String password,String auth){
         this.email = email;
         this.password = password;
     }

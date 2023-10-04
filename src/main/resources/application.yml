@@ -7,5 +7,4 @@ spring:
     hibernate:
       ddl-auto: create
     driver-class-name: com.mysql.cj.jdbc.Driver
-
-
+    dialect: org.hibernate.dialect.MySQLDialect
